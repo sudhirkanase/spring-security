@@ -1,0 +1,53 @@
+plugins {
+	id 'org.springframework.boot' version '2.3.0.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+	id 'java'
+}
+
+
+ext {
+    springVersion = '3.1.0.RELEASE'
+    emailNotification = 'build@master.org'
+    mysqlVersion = '5.1.46'
+    jasyptVersion = '3.0.3'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+
+buildDir= "target"
+//libsDirName="target"
+//rootProject.libsDirName = 'war'
+println "${rootProject} = ${rootProject}"
+
+repositories {
+	mavenCentral()
+}
+
+println project.ext.mysqlVersion
+
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	runtime 'mysql:mysql-connector-java:' + project.ext.mysqlVersion
+	compile group: 'com.github.ulisesbocchio', name: 'jasypt-spring-boot-starter', version: project.ext.jasyptVersion
+	
+	//runtimeOnly 'mysql', name: 'mysql-connector-java', version: '5.1.6'
+
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+	testImplementation 'org.springframework.security:spring-security-test'
+}
+
+test {
+	useJUnitPlatform()
+}
+
+task copyUserSvcBootJar(type :Copy){
+	
+}
