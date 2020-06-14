@@ -8,6 +8,7 @@ https://www.codejava.net/frameworks/spring-boot/spring-boot-security-role-based-
 Create custom authentication expressions
 https://www.baeldung.com/spring-security-create-new-custom-security-expression
 
+https://docs.spring.io/spring-data/data-redis/docs/current/reference/html/#tx
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
